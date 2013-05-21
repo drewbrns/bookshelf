@@ -1,3 +1,9 @@
-#Author: Drew Barnes
-#Language: Javascript
+#Bookshelf
 
+##A Personal libr
+
+
+##Author: Drew Barnes
+##Language: Javascript 
+
+##Frameworks: Backbone, Bootstrap
