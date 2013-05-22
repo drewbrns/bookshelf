@@ -1,5 +1,4 @@
-marketplace.web.tmproj
-MallRiot.tmproj
+Bookshelf.tmproj
 .DS_Store
 .DS_Store?
 ._*
@@ -7,4 +6,3 @@ MallRiot.tmproj
 .Trashes
 ehthumbs.db
 Thumbs.db
-includes/connect.php
