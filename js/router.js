@@ -2,11 +2,9 @@ define(['jquery',
 		 'underscore', 
 		 'backbone',
 		 'domReady!', 
-		 'app/views/HomeView',
-		 'app/views/ProductView'], function($, _ , Backbone, 
+		 'app/views/HomeView'], function($, _ , Backbone, 
 												   DomReady,
-												   HomeView, 
-												   ProductView){
+												   HomeView){
 
 
 		 var AppMainRouter = Backbone.Router.extend({
