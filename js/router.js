@@ -10,19 +10,22 @@ define(['jquery',
 		 var AppMainRouter = Backbone.Router.extend({
 
 				routes:{
-					'' 	      : 'home'
+					'' 	    : 'home',
+					'about' : 'about'
 				},
 
-				initialize: function(){										
-					
+				initialize: function(){									
 					this.homeView = new HomeView();
-
 				},
 
 				home: function(){
-					  $('#alembic').empty();
-					  $('#alembic').html(this.homeView.render().el);
+					$('#alembic').empty();
+					$('#alembic').html(this.homeView.render().el);
 				},
+				
+				about: function(){
+					$('#alembic').text("About");
+				}
 
 
 		 });
