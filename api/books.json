@@ -1,0 +1,30 @@
+[
+
+ {
+    "_id"       : "1",
+	"title"     : "Rich Dad, Poor Dad",
+	"author"    : "Robert Kiyosaki",
+	"coverPhoto": "",
+	"gist"      : "http://localhost/bookshelf.resources/rich_dad_poor_dad.jpg",
+	"genre"     : "Managmement"
+ }, 
+
+ {
+    "_id"       : "2",
+	"title"     : "The Big Tech Score",
+	"author"    : "Mike Kwatinetz",
+	"coverPhoto": "http://localhost/bookshelf.resources/big_tech_score.jpg",
+	"gist"      : "",
+	"genre"     : "Investment"
+ },
+ 
+ {
+ 	"_id"		: "3",
+	"title"		: "12 Simple Secrets of Microsoft Management",
+	"author"	: "David Thielen", 
+	"coverPhoto": "http://localhost/bookshelf.resources/12_simple_secrets_of_ms.jpg",
+	"gist"		: "",
+	"genre"	    : "Management"
+ }
+
+]
