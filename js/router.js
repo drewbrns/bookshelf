@@ -2,9 +2,11 @@ define(['jquery',
 		 'underscore', 
 		 'backbone',
 		 'domReady!', 
-		 'app/views/HomeView'], function($, _ , Backbone, 
-												   DomReady,
-												   HomeView){
+		 'app/views/HomeView',
+		 'app/collections/BooksCollection'], function($, _ , Backbone, 
+												 			 DomReady,
+															 HomeView,
+															 BooksCollection){
 
 
 		 var AppMainRouter = Backbone.Router.extend({
@@ -16,6 +18,13 @@ define(['jquery',
 
 				initialize: function(){									
 					this.homeView = new HomeView();
+					
+					var books = new BooksCollection();
+					
+					books.fetch();
+					
+					console.log(books.toJSON());
+					
 				},
 
 				home: function(){

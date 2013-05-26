@@ -2,7 +2,7 @@ define([
 	  'jquery',
 	  'underscore',
 	  'backbone',
-	  'apps/models/BookModel'], function($, _, Backbone, BookModel){
+	  'app/models/BookModel'], function($, _, Backbone, BookModel){
 	
   var BooksCollection = Backbone.Collection.extend({
 	   model : BookModel,
