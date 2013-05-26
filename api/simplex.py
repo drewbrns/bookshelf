@@ -1,6 +1,6 @@
 import json
 import bottle
-from bottle import route, run, request, abort, template, Bottle
+from bottle import route, run, request, response, abort, template, Bottle
 from pymongo import Connection
 import bson.json_util
  
@@ -17,19 +17,28 @@ def get_books():
 	books = db['books'].find()
 	if not books:
 		abort(404, 'No books found')
-	return bson.json_util.dumps(books)
+	return {"response" : { "success":True, "data": bson.json_util.dumps(books)} } 
 	
 @app.route('/books/:id', method = 'GET')
 def get_book(id):
 	book = db['books'].find_one({'_id':id})
 	if not book:
 		abort(404, 'No book with id %s' % id)
-	return book
+	return {"response" : book }
 	
 #POST resource	
 @app.route('/books', method = 'POST')
 def post_books():
-	return '''Created an entirely new book!'''
+		
+	books = request.json
+	
+	if books:		
+		db['books'].insert(books);
+		return {"success": True }
+	else:
+		return {"success": False}
+
+
 
 #PUT resource	
 @app.route('/books/:id', method = 'PUT')
@@ -39,7 +48,11 @@ def put_book(id):
 #DELETE resource
 @app.route('/books/:id', method = 'DELETE')
 def delete_book(id):
-	return '''Deleted Book'''
+	try:
+		db['books'].remove({'_id':id})
+		return {"resonse": {"success": True}}
+	except delError:
+		return {"resonse": {"success": False}}
 
 
 @app.route('/documents', method='PUT')
@@ -54,10 +67,10 @@ def put_document():
         db['documents'].save(entity)
     except ValidationError as ve:
         abort(400, str(ve))
-     
+  
 app.run()
- 
-run(host='localhost', port=8080)
+
+run(host='localhost', port=8080, debug=True)
 
 ### Todo:
   ##Read the bottle Api / Documentation.
