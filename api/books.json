@@ -25,6 +25,15 @@
 	"coverPhoto": "http://localhost/bookshelf.resources/12_simple_secrets_of_ms.jpg",
 	"gist"		: "",
 	"genre"	    : "Management"
+ },
+
+ {
+  	"gist"  : "", 
+	  "title" : "Selling 101", 
+	  "author": "Zig Ziglar", 
+	  "genre" : "Management", 
+	  "_id"   : "4", 
+	  "coverPhoto": "http://localhost/bookshelf.resources/selling_101.jpeg"
  }
 
 ]
