@@ -4,8 +4,8 @@
     "_id"       : "1",
 	"title"     : "Rich Dad, Poor Dad",
 	"author"    : "Robert Kiyosaki",
-	"coverPhoto": "",
-	"gist"      : "http://localhost/bookshelf.resources/rich_dad_poor_dad.jpg",
+	"coverPhoto": "http://localhost/bookshelf.resources/rich_dad_poor_dad.jpg",
+	"gist"      : "",
 	"genre"     : "Managmement"
  }, 
 

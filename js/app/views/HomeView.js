@@ -28,7 +28,6 @@ define([
 			
 		   });
 		
-		
 		},
 	
 		render: function() { 	

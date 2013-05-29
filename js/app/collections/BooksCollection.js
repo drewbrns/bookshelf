@@ -6,10 +6,7 @@ define([
 	
   var BooksCollection = Backbone.Collection.extend({
 	   model : BookModel,
-	   url   : 'api/books.json',
-	   //parse : function(response){
-		// return response.data;
-	   //} 
+	   url   : 'http://localhost:8080/books', 
   });
 
   // return Model <for public use>
