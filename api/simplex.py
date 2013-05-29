@@ -27,69 +27,73 @@ def enable_cors():
 #Get resource
 @app.route('/books', method = ['OPTIONS','GET'])
 def get_books():
-	
 	request.content_type = "application/json"
-
 	if request.method == 'OPTIONS':
 		return {}
 	else:
 
 		try:
 			books = db['books'].find()
-		
-			if not books:
-				abort(404, 'No books found')
-			
-			return dumps(books) 
-		
-			#return {"response": True}
+			return dumps(books) 	
 		except Exception as err:
-			return {"response": {"success":False, "error":  err } }
+			abort(404, 'No books found')
+			
 	
-@app.route('/books/:id', method = 'GET')
+@app.route('/books/:id', method = ['OPTIONS','GET'])
 def get_book(id):
-	book = db['books'].find_one({'_id':id})
-	if not book:
-		abort(404, 'No book with id %s' % id)
-	return {"response" : { "success":True, "data": book }}
+	if request.method == 'OPTIONS':
+		return {}
+	else:
+		try:
+			book = db['books'].find_one({'_id':id})
+			return  book 
+		except Exception as err:
+			abort(404, 'No book with id %s' % id)
 
 	
 #POST resource	
-@app.route('/books', method = 'POST')
+@app.route('/books', method = ['OPTIONS','POST'])
 def post_books():
+	if request.method == 'OPTIONS':
+		return {}
+	else: 
+		books = request.json
 		
-	books = request.json
-	
-	if books:
-		try:
-			db['books'].insert(books);
-			return {"response": {"success": True }}
-		except Exception as err:
-			return {"response": {"success": False, "error": err }}
+		if books:
+			try:
+				db['books'].insert(books);
+				return {"success":True}
+			except Exception as err:
+				return {"success": False, "error": err }
 
 
 #PUT resource	
-@app.route('/books/:id', method = 'PUT')
+@app.route('/books/:id', method = ['OPTIONS','PUT'])
 def put_book(id):
-	
-	book = request.json
-	
-	if book:
-		try: 
-			db['books'].update({'_id':id}, book)
-			return {"response": {"success": True}}
-		except Exception as err:
-			return {"response": {"success": False, "error": err } }
+    if request.method == 'OPTIONS':
+        return {}   
+    else:       
+        book = request.json
+    
+        if book:
+            try: 
+                db['books'].update({'_id':id}, book)
+                return {"success": True}
+            except Exception as err:
+                return {"success": False, "error": err }
 
 
 #DELETE resource
-@app.route('/books/:id', method = 'DELETE')
+@app.route('/books/:id', method = ['OPTIONS','DELETE'])
 def delete_book(id):
-	try:
-		db['books'].remove({'_id':id})
-		return {"resonse": {"success": True}}
-	except Exception as err:
-		return {"resonse": {"success": False, "error": err }}
+    if request.method == 'OPTIONS':
+        return {}   
+    else:	
+		try:
+			db['books'].remove({'_id':id})
+			return {"success": True}
+		except Exception as err:
+			return {"success": False, "error": err }
 
   
 app.run()
