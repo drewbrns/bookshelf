@@ -31,7 +31,6 @@ def get_books():
 	if request.method == 'OPTIONS':
 		return {}
 	else:
-
 		try:
 			books = db['books'].find()
 			return dumps(books) 	

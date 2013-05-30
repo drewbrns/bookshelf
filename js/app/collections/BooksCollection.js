@@ -7,9 +7,17 @@ define([
   var BooksCollection = Backbone.Collection.extend({
 	   model : BookModel,
 	   url   : 'http://localhost:8080/books', 
+	 //  parse : function(response){
+			//console.log(response);
+			//return response.data;
+			
+		//	console.log(response);
+			
+		//	return response;
+	  //} 
   });
 
-  // return Model <for public use>
+  // return Collection <for public use>
   return BooksCollection;
 
 });

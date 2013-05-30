@@ -19,14 +19,7 @@ define([
 			
 		   this.collection.bind("reset", this.render);
 	
-		   this.collection.fetch({
-				success : function(collection, response, options){
-					console.log('gud, all worked fine.');					
-				}, error: function(){
-					console.log('it didn\'t work.');
-				}, reset: true
-			
-		   });
+		   this.collection.fetch({ reset:true});
 		
 		},
 	
@@ -34,9 +27,18 @@ define([
 								
 			$(this.el).html(this.template);
 			
+			this.collection.comparator = function(book){
+				
+				return book.get("_id");
+			}
+			
 			this.collection.each(function(book){
 				console.log("book title: "+ book.get("title") + " id: " + book.get("_id") );
 			});
+			
+			if (this.collection.at(0)){
+				console.log(this.collection.at(0).get("title"));			
+		  	}
 			
 			return this;
 		},
