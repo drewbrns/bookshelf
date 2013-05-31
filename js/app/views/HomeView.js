@@ -1,9 +1,10 @@
 define([
 	  'jquery',
 	  'underscore',
-	  'backbone',	 
+	  'backbone',
+	  'app/views/BookView',
 	  'text!app/templates/homeView-tpl.html',
-	  'bootstrap-modal'], function($, _, Backbone, homeViewTemplate){
+	  'bootstrap-modal'], function($, _, Backbone, BookView, homeViewTemplate){
 	
   var HomeView = Backbone.View.extend({
     
@@ -32,14 +33,20 @@ define([
 				return book.get("_id");
 			}
 			
+			$books = this.$("#catalog ul");
+	
 			this.collection.each(function(book){
+				
+				var bookView = new BookView({
+					model: book,
+					collection: this.collection
+				});
+				
+				$books.append(bookView.render().el);
+				
 				console.log("book title: "+ book.get("title") + " id: " + book.get("_id") );
 			});
-			
-			if (this.collection.at(0)){
-				console.log(this.collection.at(0).get("title"));			
-		  	}
-			
+
 			return this;
 		},
 		

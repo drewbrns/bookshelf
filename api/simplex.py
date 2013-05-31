@@ -3,6 +3,7 @@ import bottle
 from bottle import route, run, request, response, abort, template, Bottle
 from pymongo import Connection
 from bson.json_util import dumps
+
  
 #Setup connection to MongoDB database
 conn = Connection('localhost', 27017)
@@ -93,6 +94,7 @@ def delete_book(id):
 			return {"success": True}
 		except Exception as err:
 			return {"success": False, "error": err }
+
 
   
 app.run()
